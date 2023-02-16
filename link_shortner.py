@@ -3,8 +3,7 @@ from random import choice
 
 import requests
 
-from config import ZENNO_KEY, REFERRALS_API_HOST, REFERRALS_API_PORT, DOMAINS
-
+from config import ZENNO_KEY, REFERRALS_API_HOST, REFERRALS_API_PORT, DOMAINS, URL
 
 
 def get_refs_api_response() -> requests.Response:
