@@ -13,9 +13,9 @@ config_general = config['general']
 URL = os.environ['URL']
 DOMAINS = ('ezc.info', 'izp.info', 'zfh.info')
 ZENNO_KEY = os.environ['ZENNO_KEY']
-DEBUG = os.environ.get('DEBUG', False)
+DEBUG = os.environ.get('DEBUG')
 config_general['DEBUG'] = DEBUG
-DEBUG = config_general.getboolean('DEBUG')
+DEBUG = config_general.getboolean('DEBUG', False)
 REFERRALS_API_HOST: str = config_general.get('REFERRALS_API_HOST')
 REFERRALS_API_PORT: int = config_general.getint('REFERRALS_API_PORT')
 
