@@ -27,12 +27,13 @@ def _fix_link(link: str):
     return link
 
 
-def get_link_v2(utm_source: str, utm_campaign: str):
+def get_link_v2(utm_source: str, utm_campaign: str, utm_term: str):
     api_json = get_refs_from_api()
     compaign = api_json.get(utm_campaign)
     link = compaign.get("link")
 
-    project_link = f'{link}&utm_campaign={utm_campaign}&utm_source={utm_source}'
+    project_link = f'{link}&utm_campaign={utm_campaign}&utm_source={utm_source}&utm_term={utm_term}'
+    print(project_link)
     params = {'key': ZENNO_KEY, 'url': project_link, 'action': 'shurl', 'chat': '1'}
     url = f'http://{choice(DOMAINS)}/api.php'
 
@@ -47,13 +48,14 @@ def get_link_v2(utm_source: str, utm_campaign: str):
             return _fix_link(content)
 
 
-def get_link(utm_source: str, utm_campaign: str) -> str:
+def get_link(utm_source: str, utm_campaign: str, utm_term: str) -> str:
     api_json = get_refs_from_api()
     compaign = api_json.get(utm_campaign)
     link = compaign.get("link")
 
-    url = f'{link}&utm_campaign={utm_campaign}&utm_source={utm_source}'
-    params = {'key': ZENNO_KEY, 'shurl': url}
+    project_link = f'{link}&utm_campaign={utm_campaign}&utm_source={utm_source}&utm_term={utm_term}'
+    print(project_link)
+    params = {'key': ZENNO_KEY, 'shurl': project_link}
     response = None
 
     while type(response) is not requests.Response:

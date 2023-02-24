@@ -14,14 +14,14 @@ async def get_root():
 
 
 @app.get('/link')
-async def get_shortened_link(project_name: str, targets_base: str):
-    link = get_link(utm_source=targets_base, utm_campaign=project_name)
+async def get_shortened_link(project_name: str, targets_base: str, donor: str):
+    link = get_link(utm_source=targets_base, utm_campaign=project_name, utm_term=donor)
     return Response(content=link)
 
 
 @app.get('/link_v2')
-async def get_shortened_link_v2(project_name: str, targets_base: str):
-    link = get_link_v2(utm_source=targets_base, utm_campaign=project_name)
+async def get_shortened_link_v2(project_name: str, targets_base: str, donor: str):
+    link = get_link_v2(utm_source=targets_base, utm_campaign=project_name, utm_term=donor)
     return Response(content=link)
 
 
